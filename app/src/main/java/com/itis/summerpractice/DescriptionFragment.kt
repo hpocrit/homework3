@@ -33,10 +33,6 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
             .error(R.drawable.not_found)
             .apply(options)
             .into(binding!!.ivDetailedPicture)
-
-        binding!!.tvDetailedId.text = getString(R.string.id) + monkey.id.toString()
-        binding!!.tvDetailedName.text = monkey.name
-        binding!!.tvDetailedDescription.text = monkey.description
     }
 
     override fun onDestroy() {
