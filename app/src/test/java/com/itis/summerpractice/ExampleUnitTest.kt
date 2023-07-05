@@ -1,4 +1,4 @@
-package com.example.hw3
+package com.itis.summerpractice
 
 import org.junit.Test
 
