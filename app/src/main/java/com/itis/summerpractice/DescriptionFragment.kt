@@ -12,13 +12,14 @@ import com.bumptech.glide.request.RequestOptions
 import com.itis.summerpractice.databinding.FragmentDescriptionBinding
 
 class DescriptionFragment : Fragment(R.layout.fragment_description) {
-    private var binding: FragmentDescriptionBinding? = null
+    private var _binding: FragmentDescriptionBinding? = null
+    private val binding get() = _binding!!
     private val options: RequestOptions = RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentDescriptionBinding.bind(view)
+        _binding = FragmentDescriptionBinding.bind(view)
 
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
@@ -33,12 +34,16 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
             .error(R.drawable.not_found)
             .apply(options)
             .into(binding!!.ivDetailedPicture)
+
+        binding.tvDetailedId.text = getString(R.string.id) + monkey.id.toString()
+        binding.tvDetailedName.text = monkey.name
+        binding.tvDetailedDescription.text = monkey.description
     }
 
     override fun onDestroy() {
         super.onDestroy()
 
-        binding = null
+        _binding = null
 
     }
 
